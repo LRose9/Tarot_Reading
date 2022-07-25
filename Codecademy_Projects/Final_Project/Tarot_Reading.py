@@ -111,25 +111,20 @@ Knight_Swords = Minor(11, "Knight", "Swords")
 
 
 
-print("Please choose a number from 0 and 21 \n")
-past = int(input())
+card_1 = int(input("Please choose a number from 0 and 21 \n"))
 
-print("Please choose a second number from 0 to 21 \n")
-present = int(input())
+card_2 = int(input("Please choose a second number from 0 to 21 \n"))
 
-print("Please choose a third number from 0 to 21")
-future= int(input())
+card_3= int(input("Please choose a third number from 0 to 21\n"))
 
-spread = Spread(past, present, future)
+spread = Spread(card_1, card_2, card_3)
 fortune = spread.generate_spread()
-print ("Past: \n")
-print(fortune[0])
-print(fortune[0].get_attributes())
-print("\n")
-print ("Present: \n")
-print(fortune[1])
-print(fortune[1].get_attributes())
-print("\n")
-print ("Future: \n")
-print(fortune[2])
-print(fortune[2].get_attributes())
+past = fortune[0]
+present = fortune[1]
+future = fortune[2]
+
+print(f"Past: \n {past} \n {past.get_attributes()}")
+
+print(f"Present: \n {present} \n {present.get_attributes()}")
+
+print(f"Future: \n {future} \n {future.get_attributes()}")
