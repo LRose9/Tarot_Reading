@@ -4,6 +4,7 @@ import random
 number = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
 archetype = ["The Fool", "The Magician", "The High Priestess", "The Empress", "The Emperor", "The Hierophant", "The Lovers", "The Chariot", "Strength", "The Hermit", "Wheel of Fortune", "Justice", "The Hanged Man", "Death", "Temperance", "The Devil", "The Tower", "The Star", "The Moon", "The Sun", "Judgement", "The World"]
 
+# Create class for Major Arcana of Deck
 class Major:
   def __init__(self, number, archetype, reverse = False):
     self.number = number
@@ -22,6 +23,7 @@ number = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 rank = ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Page", "Knight", "Queen", "King"]
 suit = ["Swords", "Pentacles", "Cups", "Wands"]
 
+# Create class for Minor Arcana of Deck:
 class Minor:
   def __init__(self, number, rank, suit):
     self.number = number
@@ -48,14 +50,16 @@ class Minor:
     elif self.suit == "Pentacles":
         attribute = pentacles_attributes[self.number]
         return "The suit of Pentacles reflects elemental Earth, including health, money and all things tangible.  The card represents " + attribute 
+
+# Create class for 'spread': 
+# Uses input to generate card representing past, present and future 
+# Uses random to decided between Major and Minor when numbers overlap (0-13)
+# If Minor, uses random to generate suit
 class Spread:
     def __init__(self, first, second, third):
         self.first = first
         self.second = second
         self.third = third
-
-    #def __repr__(self):
-        #return "The three card spread is a representation of the past, present and future of the situation in question.  The {first} card represents the past, the {second} card represents the present and the {third} card represents the future.".format(first = self.first, second = self.second, third = self.third)
 
     
     def generate_spread(self):
@@ -99,23 +103,24 @@ class Spread:
     
     
  
+#Class Examples to ensure code works properly
+
+#Empress = Major(3, "The Empress")
+#World = Major(21, "The World")
+#Ace_Cups = Minor(0, "Ace", "Cups")
+#Queen_Cups = Minor(13, "Queen", "Cups")
+#Ace_Wands = Minor(0, "Ace", "Wands")
+#Ace_Swords = Minor(0, "Ace", "Swords")
+#Knight_Swords = Minor(11, "Knight", "Swords")
 
 
-Empress = Major(3, "The Empress")
-World = Major(21, "The World")
-Ace_Cups = Minor(0, "Ace", "Cups")
-Queen_Cups = Minor(13, "Queen", "Cups")
-Ace_Wands = Minor(0, "Ace", "Wands")
-Ace_Swords = Minor(0, "Ace", "Swords")
-Knight_Swords = Minor(11, "Knight", "Swords")
 
 
+card_1 = int(input("Please choose a number from 0 and 21 \n\n"))
 
-card_1 = int(input("Please choose a number from 0 and 21 \n"))
+card_2 = int(input("Please choose a second number from 0 to 21 \n\n"))
 
-card_2 = int(input("Please choose a second number from 0 to 21 \n"))
-
-card_3= int(input("Please choose a third number from 0 to 21\n"))
+card_3= int(input("Please choose a third number from 0 to 21\n\n"))
 
 spread = Spread(card_1, card_2, card_3)
 fortune = spread.generate_spread()
@@ -123,8 +128,8 @@ past = fortune[0]
 present = fortune[1]
 future = fortune[2]
 
-print(f"Past: \n {past} \n {past.get_attributes()}")
+print(f"Past: \n {past} \n {past.get_attributes()}\n")
 
-print(f"Present: \n {present} \n {present.get_attributes()}")
+print(f"Present: \n {present} \n {present.get_attributes()}\n")
 
-print(f"Future: \n {future} \n {future.get_attributes()}")
+print(f"Future: \n {future} \n {future.get_attributes()}\n")
